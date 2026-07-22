@@ -80,7 +80,7 @@ export async function generateMetadata({ params }) {
 // 2. دالة لجلب الـ overrides من الباك إند
 async function fetchAndSetPaths() {
   try {
-    const response = await api.get('/settings/page-paths/');
+    const response = await api.get('/metadata/');
     if (response?.data) {
       setPagePathOverrides(response.data);
     }
