@@ -4,7 +4,7 @@ import React from 'react';
 import { Box, Container } from "@mui/material";
 import { usePageMetadata } from "@/hooks/useMetaData";
 import Bundles from '@/components/Bundles';
-import DescriptionSection from '@/components/Sections/BundlesDescriptionSection';
+import DescriptionSection from '@/components/sections/BundlesDescriptionSection';
 import OurSystems from '@/components/sections/OurSystems';
 import Feedback from '@/components/sections/Feedback';
 

@@ -8,12 +8,12 @@ import {
   CircularProgress,
 } from "@mui/material";
 import api from "@/utils/apis";
-import SectionsWithLeftImage from "@/components/Sections/SectionWithLeftImage";
-import SectionsWithRightImage from "@/components/Sections/SectionWithRightImage";
+import SectionsWithLeftImage from "@/components/sections/SectionWithLeftImage";
+import SectionsWithRightImage from "@/components/sections/SectionWithRightImage";
 import { useTheme } from "@emotion/react";
 import { applyPageMetadata } from "@/utils/metadataServices";
-import HowWeWork from "@/components/Sections/HowWeWork";
-import Feedback from "@/components/Sections/Feedback";
+import HowWeWork from "@/components/sections/HowWeWork";
+import Feedback from "@/components/sections/Feedback";
 
 export default function ServiceDetails({ locale, id }) {
   const [service, setService] = useState(null);
