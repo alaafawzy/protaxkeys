@@ -1,0 +1,213 @@
+
+:root {
+  font-family: "Tajawal !important";
+  color-scheme: light dark;
+  color: black;
+  background-color: #fff;
+}
+
+#LandingTitle {
+  background: linear-gradient(90deg, #9a46b8, #19547b);
+  display: "inline";
+  -webkit-text-fill-color: transparent;
+  /* -webkit-background-clip: text; */
+
+  /* -webkit-background: "linear-gradient(90deg, #9A46B8, #19547B)"; */
+}
+video {
+  border-radius: 0.6rem;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  transition: 0.3s;
+  font-family: "Cairo, sans-serif" !important;
+}
+
+.navbar-btn{
+  background-color: #47C1CA !important;
+  /* Link */
+
+/* Auto layout */
+/* display: flex;
+flex-direction: column;
+align-items: flex-end; */
+padding: 8px 24px;
+
+/* width: 341px;
+height: 48px; */
+
+background: #47C1CA;
+border-radius: 10px !important;
+
+/* Inside auto layout */
+/* flex: none; */
+/* order: 2; */
+/* flex-grow: 0; */
+font-family: 'Cairo';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 32px;
+color: #FFFFFF !important;
+
+}/* احجز جلسة عرض الخدمة الآن */
+
+/* identical to box height, or 131% */
+/* display: flex;
+align-items: center;
+text-align: right; */
+.navbar-text{
+  /* Frame 1171275746 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 24px;
+
+
+line-height: 32px;
+/* identical to box height, or 197% */
+display: flex;
+align-items: center;
+
+/* www.piflow.net/Mine Shaft */
+
+
+}
+.nav-link{
+  color: #222222;
+
+  font-family: 'Cairo';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+}
+.footer-section{
+  width: 100% !important;
+  margin: 0;
+  padding: 0;
+  background-color: #27307F !important;
+}
+.footer-brand{
+width: 52px;
+height: 52px;
+
+/* background: url(../src/assets/logo4.png),#FFFFFF; */
+background-size: contain;
+/* background-repeat: no-repeat; */
+/* padding-right: 30px; */
+border-radius: 50%;
+}
+.footer-logo{
+  width: 52px !important;
+  height: 52px !important;
+  background-color: #FFFFFF;
+  border-radius: 50% !important;
+  
+}
+/* Rectangle */
+.footer-email-icon{
+  background-color: #FFFFFF !important;
+  margin-left: -50px !important;
+  z-index: 100;
+  font-size: 24px;
+/* CoolGray/10 */
+background: #F2F4F8 !important;
+/* CoolGray/30 */
+border: none !important;
+}
+.footer-email-input{
+  padding-left: 20px !important; 
+  width: 20% !important;
+  max-width: 450px !important;
+  background: #F2F4F8 !important;
+}
+.footer-logo-text{
+  /* Rectangle 17452 */
+
+position: absolute;
+left: 0.31%;
+right: 0%;
+top: 3.84%;
+bottom: 3.85%;
+
+background: #FFFFFF;
+
+}
+.footer-hr{
+  /* Rectangle 11 */
+
+height: 2px;
+/* margin-top: 60px; */
+/* CoolGray/30 */
+background: #C1C7CD;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+color: #C1C7CD;
+}
+.footer-contact{
+  color: #FFFFFF;
+}
+.footer-titles{
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Cairo';
+}
+/* Menu Item */
+
+.footer-text{
+  font-family: 'Cairo';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+}
+.who-we-are{
+  background-color: rgba(71, 193, 202, 0.05);
+  padding-bottom: 30px;
+}
+
+@media (max-width: 850px) {
+  .sm-footer-btn{
+    margin-bottom: 20px !important;
+  }
+}
+.about-section {
+  display: grid;
+  /* Mobile first: 1 column by default */
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+/* .change-the-direction{
+  order: 2 !important;
+} */
+@media (min-width: 960px) {
+  .about-section {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+  .change-the-direction{
+    order: 1 !important;
+  }
+}
+/* .bundle-content{
+  margin-right: -40px;
+} */

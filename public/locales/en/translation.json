@@ -1,0 +1,326 @@
+{
+  "greeting": "hello world",
+  "bookNow": "Reserve a free Session",
+  "Navbar": {
+    "home": "Home",
+    "who": "About us",
+    "bundles": "Bundles",
+    "services": "Services",
+    "free": "free services",
+    "FQA": "FQA",
+    "contact": "Contact Us",
+    "button":"Reserve Now",
+    "blogs":"Blogs"
+  },
+  "Footer": {
+    "browse": "Browse website",
+    "home": "Home",
+    "who": "About us",
+    "bundles": "Bundles",
+    "services": "Services",
+    "communicate": "Communicate with us",
+    "rights": "All right save © 2024 prokeys  ",
+    "location": "Office 43-44, Al Fahedy",
+    "follow": "Follow us",
+    "btn":"subscribe to the service now",
+    "placeHolder":"subscribe to the email service to get news",
+    "followUs": "Follow us on social media",
+    "contactUs": "Contact Us",
+    "browseWebsite": "Browse Website",
+    "aboutUs": "About Us",
+    "packages": "Packages",
+    "blogs": "Blogs",
+    "contact": "Contact",
+    "copyright": "111PRO.KEYS @ 2026. All rights reserved."
+  },
+  "Landing": {
+    "title": "Turning <1>accounting challenges</1> into entrepreneurial opportunities, as accounting is a language mastered by our experts",
+    "info": "Are you looking for an easy and secure way to manage your financial and administrative affairs? ProKeys provides the optimal solution for that on our website! Through a user-friendly interface available around the clock, you can access your monthly, quarterly, and annual financial reports with just a few clicks. There's no need to worry about the security of your financial information, as we guarantee the protection of your data with the highest electronic security standards. Our website also offers ease of use and navigation, making the experience of accessing online account services smooth and convenient.",
+    "btn": "ٌReserve you free session"
+  },
+  "partners": "We are proud to live up to the confidence and aspirations of celebrities",
+  "Systems": "Systems and companies that we deal with",
+  "who": {
+    "mainTitle": "Who we are",
+    "mainDesc": "We appoint an integrated team to manage all aspects of your accounting matters, from bookkeeping to tax reporting",
+    "title": "Dedicate to developing your company",
+    "Desc": "Our team is interested in carefully monitoring your accounting performance, in addition to providing all the necessary support for preparing tax returns, value-added tax, etc"
+  },
+  "Book": {
+    "des": "Click now to book a free session with our experts to build a financial plan that suits your company's needs",
+    "btn": "Reserve a free session"
+  },
+  "HowWeWork": {
+    "howTitle": "? How We Work",
+    "btn":"ٌReserve you free session",
+    "howDesc": "Reserve.. Choose.. Receive",
+    "sesstionTitle1": "Reserve a Free Session",
+    "sesstionDesc1": "Start by booking a free session and let our specialized team assist you in understanding your needs and identifying the suitable services for you",
+    "sesstionTitle2": "Choose the Right Package",
+    "sesstionDesc2": "Based on your needs, you can choose the appropriate accounting package for you. You can also customize any package according to your unique requirements to get services that suit your company",
+    "sesstionTitle3": "Upload and Receive Reports",
+    "sesstionDesc3": "In the final step, download the application and upload the data on it in a few minutes, then let us take care of processing this data and providing accurate and timely accounting reports"
+  },
+
+  "KnowMore": {
+    "title": "Learn more about III PRO.KEYS"
+  },
+  "Packages": {
+    "Common": {
+      "mainTitle": "Choose Your Perfect Package",
+      "mainDesc": "Our accounting packages are specifically designed to meet your company's needs accurately and efficiently, to facilitate the management of financial aspects in an integrated and specialized manner",
+      "contactUs": "Get Started",
+      "showMore": "Show more packages"
+    },
+    "Basic": {
+      "cardTitle": "Basic Package",
+      "cardPrice": "k650 UAE per month",
+      "cardSale": "10% discount for annual subscription",
+      "contactUs": "Get Started",
+      "showMore": "Show more packages",
+      "bullet1": "Bookkeeping",
+      "bullet2": "Preparation of reports: Financial statements, cash flow, profit and loss, creditors and debtors report, tax report",
+      "bullet3": "Inventory management, payroll management",
+      "bullet4": "Monthly financial status discussion",
+      "bullet5": "Accounting tree evaluation service"
+    }
+    
+  },
+  "Feedback": {
+    "feed1": {
+      "whatTheySay": "What our customers say about us",
+      "subtitle":"We are committed to creating a success story for all our partners.",
+      "customerName": "Ahmed",
+      "customerTitle": "Financial controller",
+      "customerFeedback": "I wanted to say a massive thank you for the support you have given me and the team over recent period ,all of you working with all the efforts you have , really appreciating "
+    },
+    "feed2": {
+      "whatTheySay": "What our customers say about us",
+      "customerName": "yousef",
+      "customerTitle": "Accounting manger",
+      "customerFeedback": "Thank you so much for helping out ,It’s such a good chance to know pro keys company, we can take time out when needed and all team member are here to support us"
+    },
+    "feed3": {
+      "whatTheySay": "What our customers say about us",
+      "customerName": "Qmnia",
+      "customerTitle": "Human Resources Generalist",
+      "customerFeedback": "Pro keys creativity has been excellent  and I'm really happy that you've got off to such a strong start like i saw with you , wishing to you all completing this success"
+    },
+    "addFeedback":"Add Feedback",
+    "yourFeedback":"your feedback",
+    "yourRole":"your role",
+    "submitFeedback": "Submit",
+    "successSubmit": "Your feedback added successfully",
+    "errorSubmit": "There is an error"
+  },
+  "FAQ": {
+    "title": "Answering Your Questions and Meeting Your Company's Needs",
+    "q1": "What accounting services do you offer ?",
+    "a1": "We provide comprehensive accounting services including bookkeeping, preparation of monthly and annual financial reports, preparation of tax returns, auditing, financial consulting, and more",
+    "q2": "What is the cost of the accounting services you provide?",
+    "q3": "Do you provide financial consulting services?",
+    "q4": "Can I trust the confidentiality of the information I provide?"
+  },
+  "AboutUs": {
+    "title": "The impact of administrative creativity on financial growth",
+    "desc1": "Are you looking for an easy and safe way to manage your financial and administrative affairs? The pro keys on our website provide you with the perfect solution for that! Through an easy user interface that is available around the clock, you can access your monthly, quarterly and annual financial reports with just a few clicks. You do not have to worry about the security of your financial information, as we guarantee that your data is protected with the highest standards of electronic security. Our website is also easy to use and navigate, which makes the experience of obtaining online account services smooth and convenient",
+    "desc2": "It is known that accounting is the language of business, and if an organization wants to develop and grow, it must be careful to understand this language",
+    "desc3": "One of the most important accounting services that you can rely on is the corporate accounting systems design service, where you will get an integrated accounting system that guarantees you financial security",
+    "desc4": "However, if you already own an accounting system for your company, you can use the accounting system evaluation service, which works to clarify the strengths and shortcomings of the accounting system while clarifying the treatment method for the shortcomings so that your system becomes integrated and makes optimal use of it that works to grow the business. Increasing the company's profits",
+    "OurTeam": "Our Team",
+    "name": "Name",
+    "position": "CEO and Founder",
+    "Q1": {
+      "Question": "Why choose us",
+      "Answer": [
+        "111Prokeys offers a team of experts to efficiently handle your financial and administrative tasks",
+        "Provide the ideal solution for your needs",
+        "Build your financial system from scratch to a professional version",
+        "Also we help you managing the company’s financial accounting and reporting system through reconciling and monitoring accounts",
+        "Prepare necessary reports and financial statements",
+        "Also providing and interpreting financial information to relevant parities, reporting files",
+        "Transfer from excel to the system, manage training, deployment, and go-live phases through monitoring the system performance and behavior",
+        "Look for solutions for operational and financial bugs",
+        "Take the right corrective actions to have reconciled year-end results between old books and the new ERP till we skip our old system",
+        "Manage the migration process",
+        "Impose necessary organizational restructure",
+        "Define products hierarchy; cost and profit centers, selling channels and customer segmentation",
+        "Create the company’s new chart of accounts"
+      ]
+    },
+    "Q2": {
+      "Question": "Numerous financial services",
+      "Answer": [
+        "Business accounting, cost accounting, financial statements, financial analysis reports and more financial services to grow your business",
+        "Leading the following phases: Analysis, design and gap fit phases through defining company’s needs and what is expected from the system ending up with an efficient, well-structured controlled process to run the ERP implementation"
+      ]
+    },
+    "Q3": {
+      "Question": "Improving your management skills",
+      "Answer": [
+        "By creating standard of procedures and customize maps for tracking it",
+        "Planning to assessment your managerial tools and skills",
+        "Create financial controls policies for financial management (inventory “waste controls”, cashiers “collection and petty cash”, credit control, purchasing and payables, fixed asset, landed cost calculations and accounts)",
+        "Manage, supervise, train and coach the finance team"
+      ]
+    }
+  },
+  "Login": {
+    "title": "Login",
+    "subTitle": "Welcome again! Please enter your data",
+    "btn": "Login",
+    "pass": "Forgot your password ?",
+    "email": "Email",
+    "password": "Password",
+    "validation": "Email or Password is incorrect!",
+    "create": "New account",
+    "account": "don't have an account?",
+    "fail": "Email or password is not correct"
+  },
+  "ForgetPassword": {
+    "title": "Reset Password",
+    "subTitle": "Welcome again! Please enter your data",
+    "btn": "Reset Password",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "login": "Login",
+    "create": "New account",
+    "account": "don't have an account?",
+    "loginPhrase": "you have an account?",
+    "success": "Email sent successfully, check your mail",
+    "fail" : "An unexpected error occurred"
+  },
+  "ChangePassword": {
+    "title": "Change Password",
+    "subTitle": "Welcome again! Please enter your data",
+    "btn": "Change Password",
+    "email": "Email",
+    "password": "New Password",
+    "confirmPassword": "Confirm Password",
+    "oldPassword": "Old Password",
+    "login": "Login",
+    "create": "New account",
+    "account": "don't have an account?",
+    "loginPhrase": "you have an account?",
+    "success": "Password has been changed successfully",
+    "fail" : "An unexpected error occurred"
+  },
+  "FormFrame": {
+    "mainPage": "Back to main page"
+  },
+  "Register": {
+    "title": "Create a new account",
+    "subTitle": "Hey, you! Please enter your data",
+    "btn": "Create an account",
+    "Name": "Full Name",
+    "FirstName": "First Name",
+    "LastName": "Last Name",
+    "Phone": "Phone",
+    "Email": "Email",
+    "Password": "Password",
+    "create": "login",
+    "account": "have an account?",
+    "Image": "Tax record",
+    "Success":"User has been successfully created, Please wait the activation of your acount"
+  },
+  "freeProducts": {
+    "title": "Our Free Products",
+    "sectionTitle1": "Free Pricing Techniques Guide",
+    "sectionDesc1": "Protect your online store from loss with the Pricing Techniques Guide, which includes a detailed explanation of 13 strategies for pricing your products and services",
+    "sectionTitle2": "Free Financial Model Template and Guide",
+    "sectionDesc2": "The financial model is the most important financial document for startups, as it helps you track key performance indicators, forecast your future revenues, and present them to investors",
+    "sectionTitle3": "Free Value Added Tax (VAT) Guide",
+    "sectionDesc3": "Prepare for tax season by using the comprehensive guide to Value Added Tax (VAT) and learn how to prepare your tax return away from your accounting worries",
+    "btn": "Download Now"
+  },
+  "CommonQues": {
+    "title1": "Common Questions",
+    "other": "?Do you have any other questions",
+    "desc": "Can't find the answer you're looking for? Please contact our team",
+    "btn": "Contact Us"
+  },
+  "FQA": {
+    "Q1": {
+      "Question": "Preparing financial statements",
+      "Answer": "Through this service, you will be able to obtain integrated preparation of financial statements, and these lists will be prepared in accordance with well-known international standards, so that you will be able to issue highly accurate financial reports characterized by honesty and objectivity"
+    },
+    "Q2": {
+      "Question": "Numbers of financial systems",
+      "Answer": "Also, among the accounting consulting services that you can obtain is the preparation of financial systems in a professional manner, as well as the design of internal control systems, which allows you to monitor all financial transactions that take place within your organization in an easy and simple way, and without the need to exert great effort in auditing"
+    },
+    "Q3": {
+      "Question": "Developing accounting policies",
+      "Answer": "Any company or institution, regardless of its activity and the volume of its transactions, must have accounting policies that it follows. These policies clarify all accounting matters and financial activities that must be carried out within the company or institution"
+    },
+    "Q4": {
+      "Question": "Audit services",
+      "Answer": "There are many methods of auditing accounts, including many methods that rely primarily on well-known international standards for auditing accounts. These methods depend on studying the accounting systems that are relied upon within the institution, while carrying out a complete evaluation of these systems, and ensuring the extent of their effectiveness, as well as “The extent of its compatibility with international standards used in accounting"
+    }
+  },
+  "OurServises": {
+    "title1": "Services",
+    "desc1": "We excel in supporting entrepreneurs and small business owners, allowing us to fully understand the challenges they may face. Through these services, we help you overcome common challenges in the early stages of your project's growth",
+    "title2": "III PRO.KEYS Services",
+    "desc2": "You can add these services to your package",
+    "join": "Join our client list and focus on developing and growing your project",
+    "btn": "Contact Us",
+    "serv1": {
+      "title": "?Why choose us",
+      "desc": "We offers a team of experts to handle your financial and administrative tasks,providing the solution for your needs also help you to choose and build your financial system from scratch"
+    },
+    "serv2": {
+      "title": "Numerous financial services",
+      "desc": "Business accounting, cost accounting, financial statements, financial analysis reports, taxes reports and more financial services to grow your business"
+    },
+    "serv3": {
+      "title": "Improving your management skills",
+      "desc": "By creating standard of procedures and customize maps for tracking it, Also planned to assessment your managerial tools and skills"
+    }
+  },
+  "Contactus": {
+    "Title": "Contact with us",
+    "Desc": "We will contact you as quickly as possible, please form the form below to submit your request Your inquiries",
+    "Name": "Name",
+    "Company": "Company",
+    "Phone": "Phone",
+    "Email": "Email",
+    "Message": "Message",
+    "SentSucc": "Message sent",
+    "SentErr": "Something went wrong"
+  },
+  "Validation": {
+    "Email": {
+      "req": "Email can't be empty",
+      "pattern": "Email not right"
+    },
+    "Company": "Company can't be empty",
+    "Phone": {
+      "req": "phone can't be empty",
+      "pattern": "phone not right"
+    },
+    "Message": "Message can't be empty",
+    "Name": "Name can't be empty"
+  },
+  "Profile/Files": {
+    "Service": "Services",
+    "Desc": "Documents and attachments that have been uploaded"
+  },  
+  "MainFiles/Profile": {
+    "title": "Main Files",
+    "Desc": "Documents and attachments that have been uploaded",
+    "ratio1": "TRN Number",
+    "ratio2": "Commercial Register",
+    "ratio3": "Tax Card",
+    "ratio4": "Activity License",
+    "choose": "Choose the file type before uploading"
+  },
+  "FilesTable/Profile": {
+    "MainTitle": "Attached Files",
+    "MainDesc": "Files and attached resources that have been uploaded",
+    "TableTitle1": "File Name",
+    "TableTitle2": "Upload Date",
+    "TableTitle3": "File Size"
+  }
+
+}

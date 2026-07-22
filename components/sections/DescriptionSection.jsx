@@ -1,0 +1,63 @@
+"use client";
+
+import React, { useState, useEffect } from 'react';
+import { useTheme } from "@emotion/react";
+import api from '@/Api';
+import { getAltText } from '@/utils/getAltText';
+
+export default function DescriptionSection() {
+    const theme = useTheme();
+    const isRTL = theme.direction === 'rtl' ? false : true;
+    const [descriptionData, setDescriptionData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        setIsMobile(window.innerWidth < 768);
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await api.get('/bundle/description-section/');
+                if (Array.isArray(response.data)) {
+                    setDescriptionData(response.data[0]);
+                } else {
+                    setDescriptionData([]);
+                }
+            } catch (error) { console.error(error); }
+            finally { setLoading(false); }
+        };
+        fetchData();
+    }, []);
+
+    if (loading) return <div style={{ textAlign: 'center', padding: '2rem' }}>Loading...</div>;
+
+    const title = (isRTL ? descriptionData?.english_title : descriptionData?.arabic_title);
+    const description = descriptionData
+        ? (isRTL ? descriptionData?.english_description : descriptionData?.arabic_description)
+        : '...';
+    const imageUrl = descriptionData?.image || "/images/bundlesection.png"; 
+    const altText = descriptionData?.image_alt_text || 'Professional';
+
+    return (
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '4rem 2rem', fontFamily: 'Arial, sans-serif' }}>
+            <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#1a237e', textAlign: 'center', marginBottom: '4rem' }}>{title}</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', order: isMobile ? 1 : (isRTL ? 2 : 1) }}>
+                    <div style={{ width: '350px', height: '350px', borderRadius: '50%', overflow: 'hidden', boxShadow: '0 10px 40px rgba(0,0,0,0.15)' }}>
+                        <img src={imageUrl} alt={altText} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    </div>
+                </div>
+                <div style={{ position: 'relative', order: isMobile ? 2 : (isRTL ? 2 : 1) }}>
+                    <p style={{ fontSize: '1.35rem', color: '#333', lineHeight: 1.8, marginBottom: '2rem', direction: isRTL ? 'ltr' : 'rtl', textAlign: 'start' }}>
+                        {description}
+                    </p>
+                </div>
+            </div>
+        </div>
+    );
+}
