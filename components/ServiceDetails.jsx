@@ -43,9 +43,9 @@ export default function ServiceDetails({ locale, id }) {
 
   // Apply metadata based on the service object and current language
   useEffect(() => {
-    if (service) {
-      applyPageMetadata(service);
-    }
+    // if (service) {
+    //   applyPageMetadata(service);
+    // }
 
     return () => {
       document

@@ -2,7 +2,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 // رابط الـ API الأساسي (يمكن جعله متغير بيئة Environment Variable مستقبلاً)
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.protaxkeys.com/api';
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://protaxkeys.com/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,

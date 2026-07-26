@@ -17,15 +17,35 @@ export async function generateMetadata({ params }) {
   
   const slugArray = Array.isArray(slug) ? slug : [slug];
   let mainSlug = (slugArray[0] || '').toLowerCase();
+  let subMainSlug = mainSlug;
   const subParam = slugArray[1]; // استخراج الـ ID أو الـ Slug الخاص بصفحة التفاصيل إن وُجد
 
   // توحيد أسماء المسارات لتتطابق مع الـ API
-  if (mainSlug === "about-us") mainSlug = "about";
-  if (mainSlug === "bundles") mainSlug = "bundle";
-  if (mainSlug === "blogs" || mainSlug === "المدونة") mainSlug = "blog";
-  if (mainSlug === "contact-us") mainSlug = "contactus";
-  if (mainSlug === "services" || mainSlug === "ourservises") mainSlug = "services"; // أو service حسب اسم الـ endpoint عندك
+  if (mainSlug) {
+  // تحويل الحروف الإنجليزية لـ Small لسهولة البحث
+  const slug = mainSlug.toLowerCase();
 
+  // 1. من نحن (About)
+  if (/about|من نحن|من-نحن/i.test(slug)) {
+    mainSlug = "about";
+  }
+  // 2. الباقات (Bundles) - استخدمنا "باق" عشان تشمل باقة، باقات، الباقات
+  else if (/bundle|باق/i.test(slug)) {
+    mainSlug = "bundle";
+  }
+  // 3. المدونة (Blogs) - "مدون" تشمل مدونة، المدونة، مدونات
+  else if (/blog|مدون/i.test(slug)) {
+    mainSlug = "blog";
+  }
+  // 4. تواصل معنا (Contact us)
+  else if (/contact|تواصل|اتصل/i.test(slug)) {
+    mainSlug = "contactus";
+  }
+  // 5. الخدمات (Services) - "خدم" تشمل خدمة، خدمات، خدماتنا
+  else if (/servic|خدم/i.test(slug)) {
+    mainSlug = "services";
+  }
+}
   try {
     const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000/api';
     let apiUrl = '';
@@ -33,7 +53,14 @@ export async function generateMetadata({ params }) {
     if (subParam) {
       // 1. حالة صفحة التفاصيل (Blog Details / Service Details)
       // يتم استدعاء الـ endpoint المخصص للعنصر بناءً على الـ ID[cite: 9]
-      apiUrl = `${baseUrl}/${mainSlug}/${subParam}/`;
+
+      apiUrl = `${baseUrl}/${subMainSlug}/${subParam}/`;
+      if (mainSlug === 'services') {
+        apiUrl = `${baseUrl}/services/services/by-slug/${subParam}/?lang=${locale}`;
+      }
+      if (mainSlug === 'blog') {
+        apiUrl = `${baseUrl}/blog/blogs/by-slug/${subParam}/?lang=${locale}`;
+      }
     } else {
       // 2. حالة الصفحة الرئيسية (About, Blogs list, etc.)
       apiUrl = `${baseUrl}/${mainSlug}/metadata/`;
@@ -42,7 +69,7 @@ export async function generateMetadata({ params }) {
     const response = await fetch(apiUrl, {
       next: { revalidate: 3600 } 
     });
-
+    // console.log(apiUrl)
     if (response.ok) {
       const data = await response.json();
       
@@ -50,21 +77,28 @@ export async function generateMetadata({ params }) {
       const item = Array.isArray(data) ? data[0] : data;
 
       if (item) {
+        // console.log(item)
         // تحديد العنوان مع إضافة بدائل (Fallbacks) في حال كانت صفحة التفاصيل تستخدم حقولاً مختلفة (مثل title العادي)
         const title = locale === 'ar' 
-          ? (item.arabic_page_title_for_metadata || item.arabic_title || item.title || item.name) 
-          : (item.english_page_title_for_metadata || item.english_title || item.title || item.name);
+          ? (item.arabic_page_title_for_metadata) 
+          : (item.english_page_title_for_metadata);
         
         // تحديد الوصف مع بدائل
         const description = locale === 'ar' 
-          ? (item.arabic_page_description_for_metadata || item.meta_description || item.description) 
-          : (item.english_page_description_for_metadata || item.meta_description || item.description);
+          ? (item.arabic_page_description_for_metadata ) 
+          : (item.english_page_description_for_metadata);
 
         return {
-          title: title || (locale === 'ar' ? 'موقعنا' : 'Our Website'),
+          title: title || (locale === 'ar' ? 'Protaxkeys' : 'Protaxkeys'),
           description: description || '',
+          icons: {
+            icon: '/logo.svg', // تأكد إن الصورة موجودة في مجلد public
+          },
         };
       }
+    }
+    else {
+      console.log(response)
     }
   } catch (error) {
     console.error(`Error fetching metadata for API /${mainSlug}/${subParam || ''} :`, error);
@@ -74,6 +108,9 @@ export async function generateMetadata({ params }) {
   return {
     title: locale === 'ar' ? 'موقعنا' : 'Our Website',
     description: '',
+    icons: {
+            icon: '/logo.svg', // تأكد إن الصورة موجودة في مجلد public
+          },
   };
 }
 

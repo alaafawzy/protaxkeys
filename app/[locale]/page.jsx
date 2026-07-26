@@ -5,54 +5,45 @@ export async function generateMetadata({ params }) {
   
   const slugArray = Array.isArray(slug) ? slug : [slug];
   let mainSlug = (slugArray[0] || '').toLowerCase();
-  const subParam = slugArray[1]; // استخراج الـ ID أو الـ Slug الخاص بصفحة التفاصيل إن وُجد
-
-  // توحيد أسماء المسارات لتتطابق مع الـ API
-  if (mainSlug === "about-us") mainSlug = "about";
-  if (mainSlug === "bundles") mainSlug = "bundle";
-  if (mainSlug === "blogs" || mainSlug === "المدونة") mainSlug = "blog";
-  if (mainSlug === "contact-us") mainSlug = "contactus";
-  if (mainSlug === "services" || mainSlug === "ourservises") mainSlug = "services"; // أو service حسب اسم الـ endpoint عندك
-
+  const subParam = slugArray[1]; // استخراج الـ I
   try {
     const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000/api';
     let apiUrl = '';
 
-    if (subParam) {
-      // 1. حالة صفحة التفاصيل (Blog Details / Service Details)
-      // يتم استدعاء الـ endpoint المخصص للعنصر بناءً على الـ ID[cite: 9]
-      apiUrl = `${baseUrl}/${mainSlug}/${subParam}/`;
-    } else {
-      // 2. حالة الصفحة الرئيسية (About, Blogs list, etc.)
-      apiUrl = `${baseUrl}/${mainSlug}/metadata/`;
-    }
+    apiUrl = `${baseUrl}/metadata/`;
 
     const response = await fetch(apiUrl, {
       next: { revalidate: 3600 } 
     });
-
+    // console.log(apiUrl)
     if (response.ok) {
       const data = await response.json();
-      
+      // console.log(response)
       // الصفحات الرئيسية ترجع مصفوفة، صفحات التفاصيل ترجع كائن مباشر
       const item = Array.isArray(data) ? data[0] : data;
 
       if (item) {
         // تحديد العنوان مع إضافة بدائل (Fallbacks) في حال كانت صفحة التفاصيل تستخدم حقولاً مختلفة (مثل title العادي)
         const title = locale === 'ar' 
-          ? (item.arabic_page_title_for_metadata || item.arabic_title || item.title || item.name) 
-          : (item.english_page_title_for_metadata || item.english_title || item.title || item.name);
+          ? (item.arabic_page_title_for_metadata ) 
+          : (item.english_page_title_for_metadata);
         
         // تحديد الوصف مع بدائل
         const description = locale === 'ar' 
-          ? (item.arabic_page_description_for_metadata || item.meta_description || item.description) 
-          : (item.english_page_description_for_metadata || item.meta_description || item.description);
+          ? (item.arabic_page_description_for_metadata ) 
+          : (item.english_page_description_for_metadata);
 
         return {
-          title: title || (locale === 'ar' ? 'موقعنا' : 'Our Website'),
+          title: title || (locale === 'ar' ? 'Protaxkeys' : 'Protaxkeys'),
           description: description || '',
+          icons: {
+            icon: '/logo.svg', // تأكد إن الصورة موجودة في مجلد public
+          },
         };
       }
+    }
+    else {
+      console.log(response)
     }
   } catch (error) {
     console.error(`Error fetching metadata for API /${mainSlug}/${subParam || ''} :`, error);
@@ -62,6 +53,9 @@ export async function generateMetadata({ params }) {
   return {
     title: locale === 'ar' ? 'موقعنا' : 'Our Website',
     description: '',
+    icons: {
+            icon: '/logo.svg', // تأكد إن الصورة موجودة في مجلد public
+          },
   };
 }
 

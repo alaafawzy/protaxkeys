@@ -34,9 +34,9 @@ export default function BlogDetails({ locale, id }) {
   }, [blogSlug, currentLang]);
 
   useEffect(() => {
-    if (blog) {
-      applyPageMetadata(blog);
-    }
+    // if (blog) {
+    //   applyPageMetadata(blog);
+    // }
 
     return () => {
       document
