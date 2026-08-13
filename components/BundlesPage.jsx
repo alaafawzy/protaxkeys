@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 import { usePageMetadata } from "@/hooks/useMetaData";
 import Bundles from '@/components/Bundles';
 import DescriptionSection from '@/components/sections/BundlesDescriptionSection';
@@ -12,18 +12,17 @@ export default function BundlesPage({ locale, dict }) {
   // Load metadata for bundles page
   usePageMetadata('bundle');
 
-  const isRtl = locale === 'ar';
+  const direction = locale === 'ar' ? 'rtl' : 'ltr';
+  const isRtl = direction === 'rtl';
 
   return (
     <Box sx={{ width: "100%", direction: isRtl ? 'rtl' : 'ltr', py: 4 }}>
-      <Container
+      <Box
         sx={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          "& > div:not(:last-child)": {
-            marginBottom: "4rem",
-          },
+          gap: "4rem",
         }}
       >
         <Box
@@ -32,16 +31,15 @@ export default function BundlesPage({ locale, dict }) {
             flexDirection: "column",
             justifyContent: "center",
             textAlign: isRtl ? "right" : "left",
-            marginBottom: "3rem",
             gap: 4,
           }}
         >
           <DescriptionSection locale={locale} dict={dict} />
-          <Bundles locale={locale} dict={dict} />
+          <Bundles locale={locale} dict={dict} direction={direction} />
           <OurSystems locale={locale} dict={dict} />
           <Feedback locale={locale} dict={dict} />
         </Box>
-      </Container>
+      </Box>
     </Box>
   );
 }

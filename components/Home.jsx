@@ -16,6 +16,7 @@ export default async function Home({ params }) {
   // 1. فك الـ params لمعرفة اللغة مرة واحدة فقط هنا
   const resolvedParams = await params;
   const locale = resolvedParams?.locale || resolvedParams?.lang || 'ar';
+  const direction = locale === 'ar' ? 'rtl' : 'ltr';
   
   // 2. جلب القاموس (الترجمة) لتمريره لجميع الأقسام
   const dict = await getDictionary(locale);
@@ -41,7 +42,7 @@ export default async function Home({ params }) {
       <HowWeWork locale={locale} dict={dict} />
 
       
-      <Bundles locale={locale} dict={dict} />
+      <Bundles locale={locale} dict={dict} direction={direction} />
       <FAQ locale={locale} dict={dict} />
       <OurSystems locale={locale} dict={dict} />
       <Feedback locale={locale} dict={dict} /> 

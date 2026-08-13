@@ -63,19 +63,19 @@ export default function ServicesSection({ locale }) {
     <Box sx={{ backgroundColor: "#f7f8fc", py: 8, direction: isRtl ? 'rtl' : 'ltr' }}>
       <Container>
         <Typography
-          variant="h4"
+          variant="h2"
           align="center"
           sx={{ fontWeight: "bold", color: "#1f2a7a", mb: 6 }}
         >
           {isRtl ? "خدماتنا" : "Our Services"}
         </Typography>
 
-        <Grid container spacing={4} sx={{ direction: isRtl ? 'rtl' : 'ltr' }}>
+        <Grid container spacing={4} sx={{ direction: isRtl ? 'rtl' : 'ltr', justifyContent: isRtl ? 'flex-end' : 'flex-start' }}>
           {services.map((service) => (
-            // تم إزالة كلمة item هنا لمنع ظهور خطأ الـ DOM في الإصدارات الحديثة
-            <Grid xs={12} md={4} key={service.id}>
+            <Grid size={{ xs: 12, md: 6, lg: 4 }} key={service.id} sx={{ display: "flex" }}>
               <Card
                 sx={{
+                  width: "100%",
                   height: "100%",
                   borderRadius: 3,
                   background: `linear-gradient(

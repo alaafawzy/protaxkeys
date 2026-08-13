@@ -22,15 +22,17 @@ export default function HomeStarting({ locale, dict, data }) {
         {/* حاوية رئيسية بتصميم Flexbox آمن 100% */}
         <div style={{ 
           display: "flex", 
-          flexDirection: isRtl ? "row-reverse" : "row", 
+          // flexDirection: isRtl ? "row-reverse" : "row",
+          flexDirection: "row-reverse", 
           flexWrap: "wrap", 
           justifyContent: "space-between", 
           alignItems: "center",
-          gap: "2rem"
+          gap: "2rem",
+          marginTop: "3rem",
         }}>
           
           {/* قسم الصورة */}
-          <div style={{ flex: "1 1 45%", minHeight: "350px", position: "relative" }}>
+          <div style={{ flex: "1 1 45%", minHeight: "500px", position: "relative" }}>
             <div
               style={{
                 width: "100%",
@@ -51,17 +53,17 @@ export default function HomeStarting({ locale, dict, data }) {
             flex: "1 1 50%", 
             display: "flex", 
             flexDirection: "column", 
-            alignItems: isRtl ? "flex-end" : "flex-start", 
-            textAlign: isRtl ? "right" : "left",
+            // alignItems: isRtl ? "flex-end" : "flex-start", 
+            // textAlign: isRtl ? "right" : "left",
             direction: isRtl ? 'rtl' : 'ltr'
           }}>
             <h1 style={{ fontSize: "2.5rem", fontWeight: "700", color: "#27307F", marginBottom: "1.5rem" }}>
               {isRtl ? data?.arabic_title : data?.english_title}
             </h1>
             
-            <h3 style={{ fontWeight: "bold", color: "#4F4F4F", marginBottom: "1rem", fontSize: "1.5rem" }}>
+            <h2 style={{ fontWeight: "bold", color: "#4F4F4F", marginBottom: "1rem", fontSize: "1.5rem" }}>
               {isRtl ? data?.arabic_subtitle : data?.english_subtitle}
-            </h3>
+            </h2>
             
             <p style={{ fontSize: "1.2rem", marginBottom: "2rem", color: "#333" }}>
               {isRtl ? data?.arabic_description : data?.english_description}

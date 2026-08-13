@@ -45,12 +45,12 @@ export default function BlogCard({ id, englishSlug, arabicSlug, title, descripti
             <Grid
                 container
                 sx={{
-                    flexDirection: { xs: "column", md: "row-reverse" },
+                    flexDirection: { xs: "column", md: isRtl ? "row-reverse" : "row" },
                     alignItems: { xs: "center", md: "stretch" },
                     justifyContent: { xs: "center", md: "flex-start" },
                 }}
             >
-                <Grid xs={12} md={4} sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-end" } }}>
+                <Grid item xs={12} md={4} sx={{ display: "flex", justifyContent: { xs: "center",  } }}>
                     <CardMedia
                         component="img"
                         image={image}
@@ -67,15 +67,17 @@ export default function BlogCard({ id, englishSlug, arabicSlug, title, descripti
                         }}
                     />
                 </Grid>
-                <Grid xs={12} md={8} sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-start" } }}>
+                <Grid size={{ xs: 12, md: 8 }} sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-start" } }}>
                     <CardContent
                         sx={{
+                            direction: isRtl ? "rtl" : "ltr",
+                            unicodeBidi: "plaintext",
                             display: "flex",
                             flexDirection: "column",
                             justifyContent: "center",
                             alignItems: { xs: "center", md: isRtl ? "flex-end" : "flex-start" },
                             height: "100%",
-                            textAlign: { xs: "center", md: isRtl ? "right" : "left" },
+                            textAlign: { xs: "center", md:"start" },
                             width: "100%",
                         }}
                     >
@@ -87,6 +89,9 @@ export default function BlogCard({ id, englishSlug, arabicSlug, title, descripti
                                 fontFamily: 'Cairo, sans-serif',
                                 color: '#131F89',
                                 fontSize: '1.5rem',
+                                direction: "inherit",
+                                unicodeBidi: "inherit",
+                                textAlign: "inherit",
                             }}
                         >
                             {title}
@@ -98,6 +103,9 @@ export default function BlogCard({ id, englishSlug, arabicSlug, title, descripti
                                 mb: 2,
                                 fontFamily: 'Cairo, sans-serif',
                                 fontSize: '1rem',
+                                direction: "inherit",
+                                unicodeBidi: "inherit",
+                                textAlign: "inherit",
                             }}
                         >
                             {description}

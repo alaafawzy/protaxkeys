@@ -26,6 +26,7 @@ export default function CTAButton({
     cursor: 'pointer',
     transition: 'all 0.3s ease',
     boxShadow: `0 4px 12px ${primaryColor}4d`,
+    marginBottom: '0.8rem',
     ...sx // دمج التنسيقات المخصصة
   };
 

@@ -37,6 +37,7 @@ export default function Blogs({ locale }) {
     <Grid sx={{ margin: "2rem 0", direction: isRtl ? 'rtl' : 'ltr' }}>
       <Container>
         <Typography 
+          component="h1"
           variant="h4" 
           sx={{ 
             fontWeight: 700, 
@@ -54,7 +55,7 @@ export default function Blogs({ locale }) {
 
         <Grid container direction="column" spacing={3}>
           {blogs.map((blog) => (
-            <Grid xs={12} key={blog.id} sx={{ borderTop: "1px solid #ccc", pt: 3, pb: 3 }}>
+            <Grid size={12} key={blog.id} sx={{ borderTop: "1px solid #ccc", pt: 3, pb: 3 }}>
               <BlogCard
                 id={blog.id}
                 englishSlug={blog.english_slug}

@@ -34,12 +34,10 @@ export default async function Footer({ dict, locale, direction, paths }) {
     <div className="footer-section">
       <div className="container">
         {/* قسم الاشتراك بالنشرة */}
-        <div className={`row mb-5 align-items-center pt-5 flex-column-reverse ${isRTL ? 'flex-md-row' : 'flex-md-row-reverse'}`}>
+        <div className={`row mb-5 align-items-center pt-5 flex-column-reverse flex-md-row-reverse`}>
           <div className="col-12 col-md-8 pt-3">
             <div className="input-group">
-              <NavButton className="px-3 py-3 mx-2">
-                {Footer_text?.btn || "Subscribe"}
-              </NavButton>
+              
               <input
                 type="text"
                 className="form-control rounded footer-email-input"
@@ -49,6 +47,9 @@ export default async function Footer({ dict, locale, direction, paths }) {
               <span className="input-group-text footer-email-icon">
                 <FaEnvelope />
               </span>
+              <NavButton className="px-3 py-2 mx-2">
+                {Footer_text?.btn || "Subscribe"}
+              </NavButton>
             </div>
           </div>
           <div className={`col-12 col-md-4 pt-3 ${isRTL ? 'text-end' : 'text-start'} text-md-${isRTL ? 'end' : 'start'}`}>
@@ -65,12 +66,12 @@ export default async function Footer({ dict, locale, direction, paths }) {
         <hr className="footer-hr" />
 
         {/* قسم الروابط والتواصل */}
-        <div className={`row ${isRTL ? 'text-end' : 'text-start'} text-md-${isRTL ? 'end' : 'start'} mb-4 pt-5 footer-contact flex-column-reverse ${isRTL ? 'flex-md-row-reverse' : 'flex-md-row'}`}>
+        <div className={`row ${isRTL ? 'text-end' : 'text-start'} text-md-${isRTL ? 'end' : 'start'} mb-4 pt-5 footer-contact flex-column-reverse flex-md-row-reverse `}>
           
           {/* السوشيال ميديا */}
           <div className="col-md-5 mb-3">
             <h6 className="footer-titles">{Footer_text.followUs}</h6>
-            <div className={`d-flex gap-3 justify-content-${isRTL ? 'end' : 'start'} justify-content-md-${isRTL ? 'end' : 'start'} mt-4 footer-text flex-wrap`}>
+            <div className={`d-flex gap-3 justify-content-${isRTL ? 'end' : 'start'} justify-content-md-start mt-4 footer-text flex-wrap`}>
               {footerData?.youtube_url && (
                 <a href={footerData.youtube_url} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>
                   <FaYoutube size={24} style={{ cursor: 'pointer' }} />

@@ -7,7 +7,7 @@ import CTAButton from "@/components/helpfulComp/CTAButton";
 import { useRouter } from "next/navigation";
 import { getPagePathsForLang } from "@/config/pagePaths";
 
-export default function PackageCard({ Bundle, svg, locale, dict }) {
+export default function PackageCard({ Bundle, svg, locale, dict, cardWidth }) {
   const router = useRouter();
   const isRTL = locale === 'rtl' || locale === 'ar';
   
@@ -35,7 +35,7 @@ export default function PackageCard({ Bundle, svg, locale, dict }) {
   return (
     <Box 
       sx={{ 
-        width: { xs: "100%", md: "30%" },
+        width: cardWidth || { xs: "100%", md: "30%" },
         marginY: { xs: ".5rem" }, 
         maxWidth: { xs: "400px", md: "100%" }, 
         mx: { xs: "auto", md: "unset" },
@@ -125,12 +125,12 @@ export default function PackageCard({ Bundle, svg, locale, dict }) {
             },
           }}
         >
-          <Box sx={{ color: "#27307F", fontWeight: "bold", fontSize: "1.2rem", width: "100%" }}>
+          <Box sx={{ color: "#27307F", fontWeight: "bold", fontSize: "1.2rem", width: "100%", textAlign: isRTL ? "end" : "start" }}>
             {priceText}
           </Box>
           
           {offerText && (
-            <Box sx={{ color: "#333333", fontSize: "1rem", width: "100%" }}>
+            <Box sx={{ color: "#333333", fontSize: "1rem", width: "100%" , textAlign: isRTL ? "end" : "start" }}>
               {offerText}
             </Box>
           )}
@@ -141,6 +141,7 @@ export default function PackageCard({ Bundle, svg, locale, dict }) {
               onClick={() => router.push(`${prefix}/${paths.contact}`)}
             />
           </Box>
+          
           
           {Bundle?.advantages?.map((advantage, index) => (
             <BulletPoint 

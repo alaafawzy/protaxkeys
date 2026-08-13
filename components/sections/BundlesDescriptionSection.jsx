@@ -39,15 +39,15 @@ export default function DescriptionSection() {
     const imageUrl = descriptionData?.image || "/images/bundlesection.png"; // تأكد من مسار الصورة
 
     return (
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '4rem 2rem', fontFamily: 'Arial, sans-serif' }}>
-            <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#1a237e', textAlign: 'center', marginBottom: '4rem' }}>{title}</h2>
+        <div style={{ maxWidth: '1300px', margin: '0 auto', padding: '3rem 2rem', fontFamily: 'Arial, sans-serif' }}>
+            <h1 style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#1a237e', textAlign: 'center', marginBottom: '4rem' }}>{title}</h1>
             <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
                 <div style={{ display: 'flex', justifyContent: 'center', order: isMobile ? 1 : (isRTL ? 2 : 1) }}>
-                    <div style={{ width: '350px', height: '350px', borderRadius: '50%', overflow: 'hidden' }}>
+                    <div style={{ width: '450px', height: '450px', borderRadius: '50%', overflow: 'hidden' }}>
                         <img src={imageUrl} alt={getAltText(descriptionData, isRTL, 'Bundles')} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
                 </div>
-                <div style={{ position: 'relative', order: isMobile ? 2 : (isRTL ? 2 : 1) }}>
+                <div style={{ position: 'relative', order: isMobile ? 2 : (isRTL ? 1 : 2) }}>
                     <p style={{ fontSize: '1.35rem', color: '#333', lineHeight: 1.8, direction: isRTL ? 'ltr' : 'rtl', textAlign: 'start' }}>
                         {description}
                     </p>

@@ -54,6 +54,7 @@ export default function BlogDetails({ locale, id }) {
   return (
     <Container maxWidth="md" sx={{ mt: 4, mb: 8, direction: isRtl ? 'rtl' : 'ltr' }}>
       <Typography 
+        component="h1"
         variant="h4" 
         sx={{ 
           fontWeight: 700, 
@@ -79,10 +80,13 @@ export default function BlogDetails({ locale, id }) {
           fontFamily: 'Cairo, sans-serif', 
           fontSize: '1.1rem', 
           color: '#333',
-          textAlign: isRtl ? 'right' : 'left',
+          direction: isRtl ? 'rtl' : 'ltr',
+          textAlign: 'start',
+          unicodeBidi: 'plaintext',
           "& p, & div, & span, & li, & ul, & ol": {
-            direction: isRtl ? 'rtl' : 'ltr',
-            textAlign: isRtl ? 'right' : 'left',
+            direction: 'inherit',
+            textAlign: 'start',
+            unicodeBidi: 'inherit',
           },
         }}
       >

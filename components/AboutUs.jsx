@@ -81,6 +81,7 @@ export default function AboutUs({ locale, dict }) {
           }}
         >
           <Box
+            component="h1"
             sx={{
               fontFamily: "Cairo",
               fontSize: "32px",
@@ -95,6 +96,16 @@ export default function AboutUs({ locale, dict }) {
             {isRtl ? data?.arabic_title : data?.english_title}
           </Box>
           <Box
+            sx={{
+              direction: isRtl ? "rtl" : "ltr",
+              textAlign: "start",
+              unicodeBidi: "plaintext",
+              "& *": {
+                direction: "inherit",
+                textAlign: "start",
+                unicodeBidi: "inherit",
+              },
+            }}
             dangerouslySetInnerHTML={{
               __html: isRtl ? data?.arabic_description : data?.english_description
             }}

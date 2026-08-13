@@ -24,7 +24,7 @@ export function Question({ ques, ans, bg, locale }) {
           border: "1px solid #27307F",
           "&:before": { display: "none" },
           direction: isRtl ? 'rtl' : 'ltr',
-          textAlign: isRtl ? "right" : "left",
+          // textAlign: isRtl ? "start" : "",
         }}
       >
         <AccordionSummary
@@ -34,7 +34,7 @@ export function Question({ ques, ans, bg, locale }) {
             "& .MuiAccordionSummary-content": { flexDirection: "column" },
           }}
         >
-          <Typography sx={{ fontSize: "18px", fontWeight: "500", fontFamily: "Cairo", color: "#101828" }}>
+          <Typography sx={{ fontSize: "18px", fontWeight: "500", fontFamily: "Cairo", color: "#101828", textAlign: isRtl ? "end" : "start" }}>
             {ques}
           </Typography>
         </AccordionSummary>

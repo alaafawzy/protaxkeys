@@ -6,21 +6,20 @@ import { useTheme } from "@emotion/react";
 import CheckIcon from "@mui/icons-material/Check";
 // قمت بتعديل المسار ليكون Absolute Import
 
-export default function BulletPoint({ title }) {
+export default function BulletPoint({ title,locale }) {
   const theme = useTheme();
   
   return (
-    <Grid sx={{ display: "flex", alignItems: "center" }}>
+    <Grid sx={{ display: "flex", flexDirection: locale === 'ar' ? 'row' : 'row-reverse' }}>
       <Box sx={{ color: "#333333", fontWeight: "medium", fontSize: "1rem" }}>
-        {theme.direction === 'rtl' ? title?.arabic_advantage : title?.english_advantage}
+        {locale === 'ar' ? title?.arabic_advantage : title?.english_advantage}
       </Box>
       <Box>
         <CheckIcon 
           sx={{ 
             color: "#00A63E", 
             fontSize: 18, 
-            mr: theme.direction === 'rtl' ? 1 : 0, 
-            ml: theme.direction === 'rtl' ? 0 : 1 
+            mr: 1,
           }} 
         />
       </Box>

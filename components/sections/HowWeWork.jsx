@@ -53,7 +53,11 @@ export default function HowWeWork({ locale, dict }) {
         <Grid 
           container 
           spacing={4} 
-          sx={{ justifyContent: "center", alignItems: "flex-start" }}
+          sx={{
+            justifyContent: "center",
+            alignItems: "flex-start",
+            flexWrap: { xs: "wrap", md: "nowrap" },
+          }}
         >
           
             <Grid xs={12} sm={6} md={3} sx={{ order: { xs: 3, md: 0 }, direction: isRtl ? 'ltr' : 'rtl' }}>
@@ -89,7 +93,7 @@ export default function HowWeWork({ locale, dict }) {
               </Box>
             </Grid>
 
-            <Grid md={1} sx={{ display: { xs: 'none', md: 'block' } }}>
+            <Grid md={1} sx={{ display: { xs: 'none', md: 'block' }, px: { md: 2 } }}>
               <Box
                 sx={{
                   width: 16,
@@ -139,7 +143,7 @@ export default function HowWeWork({ locale, dict }) {
               </Box>
             </Grid>
 
-            <Grid md={1} sx={{ display: { xs: 'none', md: 'block' } }}>
+            <Grid md={1} sx={{ display: { xs: 'none', md: 'block' }, px: { md: 2 } }}>
               <Box
                 sx={{
                   width: 15,

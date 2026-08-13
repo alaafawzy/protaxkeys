@@ -40,10 +40,13 @@ export default function Bundles({ locale, dict }) {
     <Box className="who-we-are pt-3" sx={{ direction: isRtl ? 'rtl' : 'ltr' }}>
       <Container
         sx={{
+          width: "100%",
+          maxWidth: { lg: "1400px" },
           marginY: "4rem",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
+          px: { xs: 2, lg: 4 },
           alignContent: isRtl ? "end" : "start",
           textAlign: isRtl ? "end" : "start",
           fontFamily: "Cairo",
@@ -73,6 +76,8 @@ export default function Bundles({ locale, dict }) {
               fontSize: "2rem",
               fontWeight: "bold",
               color: "#27307F",
+              width: { xs: "100%", md: "80%", lg: "70%" },
+              mx: "auto",
             }}
           >
             {Common?.mainDesc}
@@ -84,11 +89,18 @@ export default function Bundles({ locale, dict }) {
           sx={{
             margin: "1rem 0",
             justifyContent: { xs: "center", md: isRtl ? "flex-end" : "flex-start" },
-            gap: "0.6rem",
+            gap: { xs: "0.6rem", md: "1rem", lg: "1.5rem" },
+            flexWrap: "wrap",
           }}
         >
           {bundles.map((bundle, index) => (
-            <PackageCard Bundle={bundle} key={bundle.id || index} locale={locale} dict={dict} />
+            <PackageCard
+              Bundle={bundle}
+              key={bundle.id || index}
+              locale={locale}
+              dict={dict}
+              cardWidth={{ xs: "100%", md: "calc((100% - 1rem) / 2)", lg: "calc((100% - 4.5rem) / 4)" }}
+            />
           ))}
         </Grid>
       </Container>

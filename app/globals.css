@@ -37,60 +37,33 @@ body {
 
 .navbar-btn{
   background-color: #47C1CA !important;
-  /* Link */
+  padding: 8px 24px;
+  background: #47C1CA;
+  border-radius: 10px !important;
 
-/* Auto layout */
-/* display: flex;
-flex-direction: column;
-align-items: flex-end; */
-padding: 8px 24px;
-
-/* width: 341px;
-height: 48px; */
-
-background: #47C1CA;
-border-radius: 10px !important;
-
-/* Inside auto layout */
-/* flex: none; */
-/* order: 2; */
-/* flex-grow: 0; */
-font-family: 'Cairo';
-font-style: normal;
-font-weight: 700;
-font-size: 24px;
-line-height: 32px;
-color: #FFFFFF !important;
+  font-family: 'Cairo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: #FFFFFF !important;
 
 }/* احجز جلسة عرض الخدمة الآن */
 
-/* identical to box height, or 131% */
-/* display: flex;
-align-items: center;
-text-align: right; */
 .navbar-text{
-  /* Frame 1171275746 */
-
 /* Auto layout */
 display: flex;
 flex-direction: row;
 align-items: center;
 padding: 0px;
 gap: 24px;
-
-
 line-height: 32px;
 /* identical to box height, or 197% */
 display: flex;
 align-items: center;
-
-/* www.piflow.net/Mine Shaft */
-
-
 }
 .nav-link{
   color: #222222;
-
   font-family: 'Cairo';
   font-style: normal;
   font-weight: 500;
@@ -103,32 +76,30 @@ align-items: center;
   background-color: #27307F !important;
 }
 .footer-brand{
-width: 52px;
-height: 52px;
-
-/* background: url(../src/assets/logo4.png),#FFFFFF; */
-background-size: contain;
-/* background-repeat: no-repeat; */
-/* padding-right: 30px; */
-border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  background-size: contain;
+  border-radius: 50%;
 }
 .footer-logo{
   width: 52px !important;
   height: 52px !important;
   background-color: #FFFFFF;
   border-radius: 50% !important;
-  
 }
 /* Rectangle */
 .footer-email-icon{
   background-color: #FFFFFF !important;
-  margin-left: -50px !important;
+  margin-left: -60px !important;
+  margin-right: 20px !important;
   z-index: 100;
   font-size: 24px;
-/* CoolGray/10 */
-background: #F2F4F8 !important;
-/* CoolGray/30 */
-border: none !important;
+  background: #F2F4F8 !important;
+  border: none !important;
+}
+html[dir="rtl"] .footer-email-icon{
+  margin-right: -60px !important;
+  margin-left: 20px !important;
 }
 .footer-email-input{
   padding-left: 20px !important; 
@@ -165,6 +136,7 @@ color: #C1C7CD;
 }
 .footer-contact{
   color: #FFFFFF;
+
 }
 .footer-titles{
   font-size: 18px;
@@ -178,6 +150,7 @@ color: #C1C7CD;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
+  padding-inline-start: 0 !important;
 }
 .who-we-are{
   background-color: rgba(71, 193, 202, 0.05);

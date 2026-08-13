@@ -37,9 +37,9 @@ export default function DescriptionSection() {
 
     return (
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '4rem 2rem', fontFamily: 'Arial, sans-serif' }}>
-            <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#1a237e', textAlign: 'center', marginBottom: '4rem' }}>
+            <h1 style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#1a237e', textAlign: 'center', marginBottom: '4rem' }}>
                 {isRTL ? descriptionData?.english_title : descriptionData?.arabic_title}
-            </h2>
+            </h1>
             {/* بقية العرض بنفس منطق الـ grid الخاص بك */}
         </div>
     );

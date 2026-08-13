@@ -9,6 +9,7 @@ import BlogDetails from '@/components/BlogDetails';
 import FQA from '@/components/FQA';                       
 import { getPagePathsForLang, setPagePathOverrides } from '@/config/pagePaths';
 import api from '@/utils/apis';
+import { getDictionary } from '@/getDictionary';
 
 // 1. دالة جلب الميتا داتا (تُنفذ على السيرفر قبل رسم الصفحة)
 export async function generateMetadata({ params }) {
@@ -134,6 +135,7 @@ async function fetchAndSetPaths() {
 export default async function DynamicPage({ params }) {
   const resolvedParams = await params;
   const { locale, slug } = resolvedParams;
+  const dict = await getDictionary(locale);
 
   // جلب وتطبيق تعديلات الباك إند أولاً
   await fetchAndSetPaths();
@@ -180,7 +182,7 @@ export default async function DynamicPage({ params }) {
 
       case 'services':
         if (subParam) {
-          return <ServiceDetails locale={locale} id={subParam} slug={subParam} params={resolvedParams} />;
+          return <ServiceDetails locale={locale} id={subParam} slug={subParam} params={resolvedParams} dict={dict} />;
         }
         return <OurServises locale={locale} params={resolvedParams} />;
 

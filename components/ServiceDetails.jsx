@@ -15,7 +15,7 @@ import { applyPageMetadata } from "@/utils/metadataServices";
 import HowWeWork from "@/components/sections/HowWeWork";
 import Feedback from "@/components/sections/Feedback";
 
-export default function ServiceDetails({ locale, id }) {
+export default function ServiceDetails({ locale, id, dict }) {
   const [service, setService] = useState(null);
   const [loading, setLoading] = useState(true);
   const theme = useTheme();
@@ -76,6 +76,7 @@ export default function ServiceDetails({ locale, id }) {
         <Container>
           {/* Page Title */}
           <Typography
+            component="h1"
             variant="h4"
             sx={{
               fontWeight: "bold",
@@ -97,7 +98,7 @@ export default function ServiceDetails({ locale, id }) {
           ))}
         </Container>
       </Box>
-      <HowWeWork locale={currentLang} />
+      <HowWeWork locale={currentLang} dict={dict} />
       <Feedback locale={currentLang} />
     </>
   );
