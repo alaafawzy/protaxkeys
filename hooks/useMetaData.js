@@ -50,26 +50,26 @@ export const applyPageMetadata = (metadata) => {
  * Custom hook to fetch and apply page metadata (للاستخدام داخل Client Components فقط)
  */
 export const usePageMetadata = (app) => {
-  const { i18n } = useTranslation();
+  // const { i18n } = useTranslation();
 
-  useEffect(() => {
-    const loadMetadata = async () => {
-      const metadata = await fetchPageMetadata(app);
-      if (metadata) {
-        applyPageMetadata(metadata);
-      }
-    };
+  // useEffect(() => {
+  //   const loadMetadata = async () => {
+  //     const metadata = await fetchPageMetadata(app);
+  //     if (metadata) {
+  //       applyPageMetadata(metadata);
+  //     }
+  //   };
 
-    loadMetadata();
+  //   loadMetadata();
 
-    return () => {
-      if (typeof window !== 'undefined') {
-        document.querySelectorAll('meta[data-managed-by="prokeys"]').forEach(tag => {
-          tag.remove();
-        });
-      }
-    };
-  }, [app, i18n.language]);
+  //   return () => {
+  //     if (typeof window !== 'undefined') {
+  //       document.querySelectorAll('meta[data-managed-by="prokeys"]').forEach(tag => {
+  //         tag.remove();
+  //       });
+  //     }
+  //   };
+  // }, [app, i18n.language]);
 };
 
 /**
