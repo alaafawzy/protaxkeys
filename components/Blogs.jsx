@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Grid, Container, Typography } from "@mui/material";
+import { Grid, Container, Typography, Pagination, Box } from "@mui/material";
 import { usePageMetadata } from "@/hooks/useMetaData";
 import BlogCard from "@/components/helpfulComp/BlogCard";
 import api from "@/utils/apis";
@@ -13,6 +13,9 @@ export default function Blogs({ locale }) {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
   const theme = useTheme();
 
   // تحديد اللغة بدقة من الـ prop أو قراءة الرابط مباشرة من المتصفح كاحتياطي
@@ -21,20 +24,38 @@ export default function Blogs({ locale }) {
 
   useEffect(() => {
     const fetchBlogs = async () => {
+      setLoading(true);
       try {
-        const response = await api.get(`/blog/blogs/?lang=${currentLang}`);
-        setBlogs(response.data);
+        const response = await api.get(`/blog/blogs/?lang=${currentLang}&page=${page}`);
+        
+        // Handling paginated responses (DRF standard or custom APIs)
+        if (response.data.results) {
+          setBlogs(response.data.results);
+          // Standard DRF pagination calculation (if total count is returned)
+          const count = response.data.count || response.data.results.length;
+          const pageSize = response.data.page_size || 10;
+          setTotalPages(Math.ceil(count / pageSize));
+        } else if (Array.isArray(response.data)) {
+          setBlogs(response.data);
+          setTotalPages(1);
+        }
       } catch (err) {
         setError(err);
       } finally {
         setLoading(false);
       }
     };
+
     fetchBlogs();
-  }, [currentLang]);
+  }, [currentLang, page]);
+
+  const handlePageChange = (event, value) => {
+    setPage(value);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
-    <Grid sx={{ margin: "2rem 0", direction: isRtl ? 'rtl' : 'ltr' }}>
+    <Box sx={{ margin: "2rem 0", direction: isRtl ? 'rtl' : 'ltr' }}>
       <Container>
         <Typography 
           component="h1"
@@ -71,7 +92,20 @@ export default function Blogs({ locale }) {
             </Grid>
           ))}
         </Grid>
+
+        {totalPages > 1 && (
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 6 }}>
+            <Pagination
+              count={totalPages}
+              page={page}
+              onChange={handlePageChange}
+              color="primary"
+              size="large"
+              dir={isRtl ? 'rtl' : 'ltr'}
+            />
+          </Box>
+        )}
       </Container>
-    </Grid>
+    </Box>
   );
 }

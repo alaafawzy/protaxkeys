@@ -50,7 +50,7 @@ export default function BlogCard({ id, englishSlug, arabicSlug, title, descripti
                     justifyContent: { xs: "center", md: "flex-start" },
                 }}
             >
-                <Grid item xs={12} md={4} sx={{ display: "flex", justifyContent: { xs: "center",  } }}>
+                <Grid  xs={12} md={4} sx={{ display: "flex", justifyContent: { xs: "center",  } }}>
                     <CardMedia
                         component="img"
                         image={image}
