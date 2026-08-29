@@ -1,7 +1,7 @@
 import { pagePaths } from '@/config/pagePaths';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://protaxkeys.com';
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://protaxkeys.com/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://www.protaxkeys.com/api';
 
 function toAbsolute(path) {
   return `${SITE_URL}${path}`;

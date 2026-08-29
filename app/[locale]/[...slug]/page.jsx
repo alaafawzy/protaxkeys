@@ -11,7 +11,7 @@ import { getPagePathsForLang, setPagePathOverrides } from '@/config/pagePaths';
 import api from '@/utils/apis';
 import { getDictionary } from '@/getDictionary';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://protaxkeys.com/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://www.protaxkeys.com/api';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://protaxkeys.com';
 
 async function fetchServerJson(path) {
@@ -163,7 +163,7 @@ export async function generateMetadata({ params }) {
   const pageKey = resolvePageKey(routeSlug, locale);
 
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://protaxkeys.com/api';
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://www.protaxkeys.com/api';
     let apiUrl = '';
 
     if (subParam) {

@@ -17,7 +17,7 @@ export async function generateMetadata({ params }) {
   };
 
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://protaxkeys.com/api';
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://www.protaxkeys.com/api';
     const apiUrl = `${baseUrl}/metadata/`;
 
     const response = await fetch(apiUrl, {
