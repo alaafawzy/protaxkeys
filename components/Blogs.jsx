@@ -1,56 +1,30 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Grid, Container, Typography, Pagination, Box } from "@mui/material";
 import { usePageMetadata } from "@/hooks/useMetaData";
 import BlogCard from "@/components/helpfulComp/BlogCard";
-import api from "@/utils/apis";
-import { useTheme } from "@emotion/react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-export default function Blogs({ locale }) {
+export default function Blogs({ locale, blogs = [], page = 1, totalPages = 1, hasError = false }) {
   usePageMetadata('blog');
-
-  const [blogs, setBlogs] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-
-  const theme = useTheme();
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   // تحديد اللغة بدقة من الـ prop أو قراءة الرابط مباشرة من المتصفح كاحتياطي
   const currentLang = locale || (typeof window !== 'undefined' && window.location.pathname.split('/')[1] === 'en' ? 'en' : 'ar');
   const isRtl = currentLang === 'ar';
 
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      setLoading(true);
-      try {
-        const response = await api.get(`/blog/blogs/?lang=${currentLang}&page=${page}`);
-        
-        // Handling paginated responses (DRF standard or custom APIs)
-        if (response.data.results) {
-          setBlogs(response.data.results);
-          // Standard DRF pagination calculation (if total count is returned)
-          const count = response.data.count || response.data.results.length;
-          const pageSize = response.data.page_size || 10;
-          setTotalPages(Math.ceil(count / pageSize));
-        } else if (Array.isArray(response.data)) {
-          setBlogs(response.data);
-          setTotalPages(1);
-        }
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchBlogs();
-  }, [currentLang, page]);
-
   const handlePageChange = (event, value) => {
-    setPage(value);
+    const params = new URLSearchParams(searchParams?.toString() || '');
+    if (value <= 1) {
+      params.delete('page');
+    } else {
+      params.set('page', String(value));
+    }
+
+    router.push(`${pathname}${params.toString() ? `?${params.toString()}` : ''}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -71,8 +45,13 @@ export default function Blogs({ locale }) {
           {isRtl ? "مدونة" : "Blogs"}
         </Typography>
 
-        {loading && <Typography align="center">Loading...</Typography>}
-        {error && <Typography align="center" color="error">Error loading blogs.</Typography>}
+        {hasError && <Typography align="center" color="error">Error loading blogs.</Typography>}
+
+        {!hasError && blogs.length === 0 && (
+          <Typography align="center" sx={{ color: '#666', py: 4 }}>
+            {isRtl ? 'لا توجد مقالات متاحة حالياً.' : 'No blogs available right now.'}
+          </Typography>
+        )}
 
         <Grid container direction="column" spacing={3}>
           {blogs.map((blog) => (

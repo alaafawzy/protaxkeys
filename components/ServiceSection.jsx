@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import {
   Container,
   Grid,
@@ -15,8 +14,6 @@ import StorageOutlinedIcon from "@mui/icons-material/StorageOutlined";
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import TaskAltOutlinedIcon from "@mui/icons-material/TaskAltOutlined";
 
-import api from "@/utils/apis";
-import { useTheme } from "@emotion/react";
 import Link from "next/link";
 import { getPagePathsForLang } from "@/config/pagePaths";
 
@@ -26,38 +23,11 @@ const iconMap = {
   task: <TaskAltOutlinedIcon />,
 };
 
-export default function ServicesSection({ locale }) {
-  const [services, setServices] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const theme = useTheme();
-  
-  const currentLang = locale || (theme.direction === 'rtl' ? 'ar' : 'en');
+export default function ServicesSection({ locale, services = [] }) {
+  const currentLang = locale || 'ar';
   const isRtl = currentLang === 'ar';
   const prefix = `/${currentLang}`;
   const paths = getPagePathsForLang(currentLang);
-
-  useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        const response = await api.get("/services/services/");
-        setServices(response.data);
-      } catch (error) {
-        console.error("Failed to load services", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchServices();
-  }, []);
-
-  if (loading) {
-    return (
-      <Typography align="center" sx={{ mt: 5 }}>
-        Loading...
-      </Typography>
-    );
-  }
 
   return (
     <Box sx={{ backgroundColor: "#f7f8fc", py: 8, direction: isRtl ? 'rtl' : 'ltr' }}>

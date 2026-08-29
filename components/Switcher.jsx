@@ -1,29 +1,83 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { getPagePathsForLang } from "@/config/pagePaths";
 
 const languages = [
   { code: "en", label: "English" },
   { code: "ar", label: "العربية" },
 ];
 
-export default function Switcher({ xs }) {
+const ROUTE_KEYS = ["about", "faq", "bundles", "services", "contact", "blogs"];
+
+function normalizeSegment(segment) {
+  if (!segment) return "";
+  try {
+    return decodeURIComponent(segment);
+  } catch {
+    return segment;
+  }
+}
+
+function mapLocalizedSegment(sourceLang, targetLang, segment) {
+  if (!segment) return segment;
+
+  const normalizedSegment = normalizeSegment(segment);
+  const sourcePaths = getPagePathsForLang(sourceLang);
+  const targetPaths = getPagePathsForLang(targetLang);
+  const matchedKey = ROUTE_KEYS.find((key) => {
+    const sourceSegment = sourcePaths[key];
+    if (!sourceSegment) return false;
+
+    return (
+      sourceSegment === normalizedSegment ||
+      sourceSegment === segment ||
+      encodeURIComponent(sourceSegment) === segment
+    );
+  });
+
+  return matchedKey ? targetPaths[matchedKey] : normalizedSegment;
+}
+
+export default function Switcher({ locale }) {
   const [open, setOpen] = useState(false);
   
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   // استخراج اللغة الحالية من الـ URL
-  const currentLocale = pathname?.split('/')[1] === "ar" ? "ar" : "en";
+  const currentLocale = locale === "ar" || locale === "en"
+    ? locale
+    : (pathname?.split('/')[1] === "ar" ? "ar" : "en");
 
   const changeLanguage = (code) => {
     const targetLang = code === "en" || code === "ar" ? code : (currentLocale === "en" ? "ar" : "en");
 
+    if (targetLang === currentLocale) {
+      setOpen(false);
+      return;
+    }
+
     // توجيه المستخدم لنفس الصفحة ولكن باللغة الجديدة
     if (pathname) {
-      const newPath = pathname.replace(`/${currentLocale}`, `/${targetLang}`);
-      router.replace(newPath);
+      const segments = pathname.split('/').filter(Boolean);
+
+      if (segments.length === 0) {
+        router.replace(`/${targetLang}`);
+      } else {
+        const [, ...rest] = segments;
+
+        if (rest.length === 0) {
+          router.replace(`/${targetLang}`);
+        } else {
+          const mappedFirst = mapLocalizedSegment(currentLocale, targetLang, rest[0]);
+          const newPath = `/${targetLang}/${[mappedFirst, ...rest.slice(1)].join('/')}`;
+          const query = searchParams?.toString();
+          router.replace(query ? `${newPath}?${query}` : newPath);
+        }
+      }
     } else {
       router.replace(`/${targetLang}`);
     }

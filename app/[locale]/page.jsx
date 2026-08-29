@@ -1,16 +1,24 @@
 import Home from '@/components/Home'; // تأكد من المسار الصحيح للمكون
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://protaxkeys.com';
+
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
-  const { locale, slug } = resolvedParams;
-  
-  const slugArray = Array.isArray(slug) ? slug : [slug];
-  let mainSlug = (slugArray[0] || '').toLowerCase();
-  const subParam = slugArray[1]; // استخراج الـ I
-  try {
-    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000/api';
-    let apiUrl = '';
+  const { locale } = resolvedParams;
 
-    apiUrl = `${baseUrl}/metadata/`;
+  const canonical = `/${locale}`;
+  const alternates = {
+    canonical,
+    languages: {
+      ar: '/ar',
+      en: '/en',
+      'x-default': '/ar',
+    },
+  };
+
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://protaxkeys.com/api';
+    const apiUrl = `${baseUrl}/metadata/`;
 
     const response = await fetch(apiUrl, {
       next: { revalidate: 3600 } 
@@ -33,11 +41,37 @@ export async function generateMetadata({ params }) {
           ? (item.arabic_page_description_for_metadata ) 
           : (item.english_page_description_for_metadata);
 
+        const pageTitle = title || 'Protaxkeys';
+        const pageDescription = description || 'Protaxkeys consulting and accounting services.';
+
         return {
-          title: title || (locale === 'ar' ? 'Protaxkeys' : 'Protaxkeys'),
-          description: description || '',
+          title: pageTitle,
+          description: pageDescription,
+          alternates,
+          openGraph: {
+            type: 'website',
+            locale: locale === 'ar' ? 'ar_AE' : 'en_US',
+            url: canonical,
+            title: pageTitle,
+            description: pageDescription,
+            siteName: 'Protaxkeys',
+            images: [
+              {
+                url: '/logo.svg',
+                width: 1200,
+                height: 630,
+                alt: pageTitle,
+              },
+            ],
+          },
+          twitter: {
+            card: 'summary_large_image',
+            title: pageTitle,
+            description: pageDescription,
+            images: ['/logo.svg'],
+          },
           icons: {
-            icon: '/logo.svg', // تأكد إن الصورة موجودة في مجلد public
+            icon: '/logo.svg',
           },
         };
       }
@@ -46,16 +80,36 @@ export async function generateMetadata({ params }) {
       console.log(response)
     }
   } catch (error) {
-    console.error(`Error fetching metadata for API /${mainSlug}/${subParam || ''} :`, error);
+    console.error('Error fetching metadata for home page:', error);
   }
 
   // الميتا داتا الافتراضية
   return {
-    title: locale === 'ar' ? 'موقعنا' : 'Our Website',
-    description: '',
+    title: locale === 'ar' ? 'Protaxkeys' : 'Protaxkeys',
+    description: locale === 'ar'
+      ? 'خدمات Protaxkeys للاستشارات والمحاسبة.'
+      : 'Protaxkeys consulting and accounting services.',
+    alternates,
+    openGraph: {
+      type: 'website',
+      locale: locale === 'ar' ? 'ar_AE' : 'en_US',
+      url: `${SITE_URL}${canonical}`,
+      title: 'Protaxkeys',
+      description: locale === 'ar'
+        ? 'خدمات Protaxkeys للاستشارات والمحاسبة.'
+        : 'Protaxkeys consulting and accounting services.',
+      siteName: 'Protaxkeys',
+    },
+    twitter: {
+      card: 'summary',
+      title: 'Protaxkeys',
+      description: locale === 'ar'
+        ? 'خدمات Protaxkeys للاستشارات والمحاسبة.'
+        : 'Protaxkeys consulting and accounting services.',
+    },
     icons: {
-            icon: '/logo.svg', // تأكد إن الصورة موجودة في مجلد public
-          },
+      icon: '/logo.svg',
+    },
   };
 }
 

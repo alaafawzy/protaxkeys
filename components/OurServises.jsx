@@ -7,7 +7,7 @@ import DescriptionSection from "@/components/sections/ServicesDescriptionSection
 import Feedback from "@/components/sections/Feedback";
 import ServicesSection from "@/components/ServiceSection";
 
-export default function OurServices({ locale, dict }) {
+export default function OurServices({ locale, dict, services = [], descriptionData = null }) {
   // Load metadata for services page
   usePageMetadata('services');
 
@@ -35,8 +35,8 @@ export default function OurServices({ locale, dict }) {
             gap: 4,
           }}
         >
-          <DescriptionSection locale={locale} dict={dict} />
-          <ServicesSection locale={locale} dict={dict} />
+          <DescriptionSection locale={locale} dict={dict} descriptionData={descriptionData} />
+          <ServicesSection locale={locale} dict={dict} services={services} />
           <Feedback locale={locale} dict={dict} />
         </Box>
       </Container>

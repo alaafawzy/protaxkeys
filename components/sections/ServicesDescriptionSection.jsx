@@ -2,14 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { useTheme } from "@emotion/react";
-import api from '@/utils/apis';
 import { getAltText } from '@/utils/getAltText';
 
-export default function DescriptionSection() {
+export default function DescriptionSection({ descriptionData }) {
     const theme = useTheme();
     const isRTL = theme.direction === 'rtl' ? false : true;
-    const [descriptionData, setDescriptionData] = useState(null);
-    const [loading, setLoading] = useState(true);
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
@@ -22,18 +19,7 @@ export default function DescriptionSection() {
         }
     }, []);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await api.get('/services/description-section/');
-                setDescriptionData(Array.isArray(response.data) ? response.data[0] : []);
-            } catch (error) { console.error(error); }
-            finally { setLoading(false); }
-        };
-        fetchData();
-    }, []);
-
-    if (loading) return <div style={{ textAlign: 'center', padding: '2rem' }}>Loading...</div>;
+    if (!descriptionData) return null;
 
     return (
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '4rem 2rem', fontFamily: 'Arial, sans-serif' }}>

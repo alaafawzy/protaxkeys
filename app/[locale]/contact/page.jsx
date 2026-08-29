@@ -1,8 +1,10 @@
-export default function ContactPage() {
-  return (
-    <main style={{ padding: '3rem', textAlign: 'center' }}>
-      <h1>صفحة اتصل بنا</h1>
-      <p>هذا مجلد ثابت يمكن تغيير مساره برمجياً باستخدام rewrites</p>
-    </main>
-  );
+import ContactUs from '@/components/CountactUs';
+import { getDictionary } from '@/getDictionary';
+
+export default async function ContactPage({ params }) {
+  const resolvedParams = await params;
+  const locale = resolvedParams?.locale || 'ar';
+  const dict = await getDictionary(locale);
+
+  return <ContactUs locale={locale} dict={dict} />;
 }

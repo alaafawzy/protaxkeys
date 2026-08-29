@@ -92,7 +92,7 @@ export default function Navbar({ dict, locale, paths }) {
               <Link className="nav-link" href={`${prefix}/${paths.contact}`} onClick={close}>{NavTitles.contact}</Link>
             </li>
             <li className="nav-item">
-              <Switcher />
+              <Switcher locale={locale} />
             </li>
             {/* زر الحجز - شاشات الجوال */}
             <li className="nav-item d-lg-none mt-3">
